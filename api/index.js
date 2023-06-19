@@ -19,7 +19,7 @@ const jwtSecret = 'sfg4tsdfgszdf34asfd435345sdf'
 
 app.use(express.json());
 app.use(cookieParser());
-app.use('/uploads', express.static(__dirname+'/uploads'))
+app.use('/uploads', express.static(__dirname+'api/uploads'))
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:5173',
@@ -115,7 +115,7 @@ app.post('/register', async (req,res) => {
       const ext = parts[parts.length - 1]
       const newPath = path + '.' + ext;
       fs.renameSync(path, newPath)
-      uploadedFiles.push(newPath.replace('uploads/', ''))
+      uploadedFiles.push(newPath.replace('uploads', ''))
     }
     res.json(uploadedFiles);
 
